@@ -94,12 +94,14 @@ while wrong_guesses < lives - 1:
     if guess in letters_list:
         letter_index = letters_list.index(guess)
         display[letter_index] = guess
-        letters_list[letter_index] = "$"
+        # letters_list[letter_index] = "$"
 
 #TODO-2: - If guess is not a letter in the chosen_word,
 # Increase wrong guesses by 1. Print the ASCII art from 'stages' that corresponds to the current number of wrong guesses the user has made. 
     else:
-      print("\n".join(stages[-1:wrong_guesses + 1]))
+      hanging_stage = stages.pop()
+      print(hanging_stage)
+      # print("\n".join(hanging_stage[0:lives - 1]))
       wrong_guesses += 1
   #If lives goes down to 0 then the game should stop and it should print "You lose."
     if wrong_guesses == lives:
