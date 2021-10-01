@@ -59,6 +59,7 @@ stages = ['''
 =========
 ''']
 
+# hanging_man = stages.reverse()
 end_of_game = False
 wrong_guesses = 0
 word_list = ["aardvark", "baboon", "camel"]
@@ -96,11 +97,14 @@ while wrong_guesses < lives - 1:
         letters_list[letter_index] = "$"
 
 #TODO-2: - If guess is not a letter in the chosen_word,
-#Then reduce 'lives' by 1. 
+# Increase wrong guesses by 1. Print the ASCII art from 'stages' that corresponds to the current number of wrong guesses the user has made. 
     else:
-      print("\n".join(stages[0:wrong_guesses + 1]))
+      print("\n".join(stages[-1:wrong_guesses + 1]))
       wrong_guesses += 1
   #If lives goes down to 0 then the game should stop and it should print "You lose."
+    if wrong_guesses == lives:
+      print("You lose")
+      break
 
   #Join all the elements in the list and turn it into a String.
     print(f"{' '.join(display)}")
@@ -111,5 +115,3 @@ while wrong_guesses < lives - 1:
         end_of_game = True
         print("You win.")
         break
-
-    #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
